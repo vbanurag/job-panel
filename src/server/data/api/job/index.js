@@ -1,10 +1,14 @@
 import express from 'express'
 import {
-    getJob
+    getJob,
+    createJob,
+    updateJob
 } from './job.controller'
 
 const router = express.Router()
 
-router.get('/:id', getJob)
+router.get('/', getJob)
+router.post('/', createJob)
+router.put('/', updateJob)
 
 export default router

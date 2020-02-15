@@ -8,17 +8,13 @@ const jobSchema = new Schema({
         required: true
     },
     date: {
-        type: Number,
+        type: Date,
         default: Date.now()
     },
     location: String,
     status: { type: String, default: 'PUBLISHED' },
 }, {safe: true})
 
-continentSchema.index({
-    'type': 1,
-    'friendlyUrl': 1
-})
 
 const Job = mongoose.model('Job', jobSchema)
 export default Job

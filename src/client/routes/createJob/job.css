@@ -1,0 +1,97 @@
+@import '../../components/variables.css';
+
+.root {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 0 40px;
+  max-width: var(--max-content-width);
+}
+
+.newsItem {
+  margin: 0 0 2rem;
+}
+
+.newsTitle {
+  font-size: 1.5rem;
+}
+
+.newsDesc {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 1.125rem;
+  }
+
+  pre {
+    white-space: pre-wrap;
+    font-size: 0.875rem;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.formContainer {
+  max-width: 500px;
+  margin: 0px auto;
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 50px;
+  background-color: #fff;
+}
+
+.formHeading {
+  text-align: center;
+}
+
+.formLabels {
+  font-size: 18px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: #2b2e39;
+  display: block;
+  margin: 25px 0;
+}
+
+.formTextFields {
+  border: 0;
+  border-bottom: 1px solid #2b2e39;
+  outline: 0;
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.radioFields {
+  margin-right: 15px;
+}
+
+.buttonFields{
+  outline: 0;
+  padding: 10px;
+  width: 100%;
+  color: #fff;
+  display: block;
+  border: 1px solid #5eabd1;
+  border-radius: 30px;
+  background-color: #8bd0f0;
+}
+
+.background {
+  padding: 50px 0;
+  background: rgba(212,228,239,1);
+  background: -moz-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(212,228,239,1)), color-stop(100%, rgba(134,174,204,1)));
+  background: -webkit-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+  background: -o-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+  background: -ms-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+  background: linear-gradient(to right, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#86aecc', GradientType=1 );
+}

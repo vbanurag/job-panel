@@ -7,9 +7,9 @@ import run from './run'
 // Heroku url can be configured here for staging env.
 const remote = {
     name: 'heroku',
-    url: 'https://git.heroku.com/travel-diaries-staging.git',
+    url: 'https://git.heroku.com/job-panel-env.git',
     branch: 'master',
-    website: 'https://travel-diaries-staging.herokuapp.com/'
+    website: 'https://job-panel-env.herokuapp.com/'
 }
 
 const options = {

@@ -208,7 +208,7 @@ const clientConfig = {
   target: 'web',
 
   entry: {
-    admin: "./src/client/admin/index.js",
+    admin: "./src/client/routes/index.js",
     client: ['babel-polyfill', './src/client/clientLoader.js'],
   },
 

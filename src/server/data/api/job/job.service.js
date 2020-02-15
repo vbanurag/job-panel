@@ -1,18 +1,17 @@
 import Job from './job.model'
 
-
-export const getJob = async (condition) => {
+export const jobs = async (condition) => {
     return Job
-        .findOne(condition)
+        .find(condition)
         .lean()
         .exec()
 }
 
-export const createJob = async (payload) => {
+export const create = async (payload) => {
     return await Job.create(payload)
 }
 
-export const updateJob = async(condition, update) => {
+export const update = async(condition, update) => {
     return await Job
         .findOneAndUpdate(condition, {$set:update}, {new: true})
         .lean()

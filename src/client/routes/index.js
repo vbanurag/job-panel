@@ -7,6 +7,8 @@ export default {
   children: [
     require('./home').default,
     require('./about').default,
+    require('./createJob').default,
+    require('./jobListing').default
 
     // Wildcard routes, e.g. { path: '*', ... } (must go last)
     //require('./notFound').default

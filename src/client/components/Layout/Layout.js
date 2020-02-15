@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
@@ -19,7 +19,6 @@ class Layout extends React.Component {
       <div>
         <Header />
         {this.props.children}
-        <Feedback />
         <Footer />
       </div>
     );

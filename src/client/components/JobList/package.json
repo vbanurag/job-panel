@@ -1,0 +1,6 @@
+{
+    "name": "List Card",
+    "version": "0.0.0",
+    "private": true,
+    "main": "./JobListCard.js"
+  }

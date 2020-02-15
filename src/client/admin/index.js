@@ -1,2 +1,0 @@
-require('./admin')
-require('./components')
