@@ -161,7 +161,7 @@
     "css-loader": "^0.28.4",
     "editorconfig-tools": "^0.1.1",
     "enzyme": "^2.8.2",
-    "eslint": "^3.19.0",
+    "eslint": "^4.19.1",
     "eslint-config-airbnb": "^15.0.1",
     "eslint-loader": "^1.7.1",
     "eslint-plugin-css-modules": "^2.7.1",
