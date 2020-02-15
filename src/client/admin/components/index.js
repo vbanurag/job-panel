@@ -1,0 +1,10 @@
+
+require('./lodash.service')
+require('./api-resource')
+require('./util-directive')
+require('./dashboard')
+require('./continent')
+require('./navbar')
+require('./country')
+require('./city')
+require('./region')

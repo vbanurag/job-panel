@@ -1,0 +1,155 @@
+<div class="menubar fixed">
+    <div class="sidebar-toggler visible-xs">
+        <i class="ion-navicon"></i>
+    </div>
+
+    <div class="page-title">
+        {{continentForm.isNewOperation?'Create':'Edit'}} Continent
+    </div>
+    <a ui-sref="continent.list" class="new-user btn btn-success pull-right">
+        <span>Cancel</span>
+    </a>
+</div>
+<div class="content-wrapper" style="padding-bottom: 100px;">
+
+    <div data-ng-show="continentForm.loading" class="animationload">
+        <div class="osahanloading"></div>
+    </div>
+
+    <div class="alert alert-success alert-dismissible" role="alert" data-ng-show="message">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span
+                class="sr-only">Close</span></button>
+        {{message}}
+    </div>
+    <div class="alert-danger" role="alert" data-ng-show="errorMessage" style="padding: 6px; margin: 10px;">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span
+                class="sr-only">Close</span></button>
+        {{errorMessage || continentForm.errorMessage}}
+    </div>
+    <form class="form-horizontal" role="form" novalidate name="editForm">
+        <div class="form-group" data-ng-class="{'has-error':editForm.title.$error.required}">
+            <label class="col-sm-2 control-label"> Continent Name <span>*</span></label>
+            <div class="col-sm-10">
+                <input
+                        type="text"
+                        class="form-control"
+                        required data-ng-model="continentForm.payload.name"
+                        name="Name"
+                        placeholder="Continent Name">
+                <span
+                        ng-show="editForm.title.$error.required"
+                        class="settings-error">Name is required.
+          </span>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Description</label>
+            <div class="col-sm-10">
+                <textarea class="ckeditor" cols="10" rows="8" placeholder="Description" id="descEditor"
+                          data-ng-model="continentForm.payload.description"
+                          ck-editor></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Tags</label>
+            <div class="col-sm-10">
+                <tags-input
+                        min-length="0"
+                        placeholder="Press Enter to add a tag"
+                        ng-model="continentForm.payload.tags">
+                </tags-input>
+            </div>
+        </div>
+
+        <div class="form-group" data-ng-if="(continentForm.payload.mainImage && continentForm.payload.mainImage.publicId) ||continentForm.payload.cloudFiles.length">
+            <label class="col-sm-2 control-label">Photographer Name <span class="text-danger">*</span></label>
+            <div class="col-sm-10">
+                <input
+                        required
+                        type="text" class="form-control"
+                        data-ng-model="continentForm.payload.photographerName" placeholder="Photographer Name" min="0">
+            </div>
+
+        </div>
+        <div class="form-group" data-ng-if="(continentForm.payload.mainImage && continentForm.payload.mainImage.publicId) ||continentForm.cloudFiles.length">
+            <label class="col-sm-2 control-label">Photographer Link</label>
+            <div class="col-sm-10">
+                <input
+                        type="text" class="form-control"
+                        data-ng-model="continentForm.payload.photographerLink" placeholder="Photographer Link" min="0">
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Images</label>
+            <div class="col-sm-10">
+                <input
+                        type="file" ngf-select="continentForm.uploadFiles($files)"
+                        ng-model="continentForm.files"
+                        accept="image/x-png,image/gif,image/jpeg"
+                        multiple>
+            </div>
+            <div style="margin-top: 50px; margin-left:50px">
+                <!--edit case-->
+                <div
+                        data-ng-show="!continentForm.isNewOperation" style="float: left;margin-right: 5px; " class="file"
+                        ng-repeat="image in continentForm.payload.images track by $index">
+                    <div class="preview">
+                        <cl-image
+                                public-id="{{image.publicId}}" class="thumbnail inline" format="jpg">
+                        </cl-image>
+                    </div>
+                    <p class="image_name_wrap">{{image.name}}</p>
+                    <div style="text-align: center;">
+                        <a data-ng-click="continentForm.removeCloudImage(image.publicId,$index)"
+                           style="color:#FF0000">Remove</a>
+                    </div>
+                </div>
+
+                <div style="float: left;margin-right: 5px; " class="file"
+                     ng-repeat="file in continentForm.cloudFiles track by $index">
+                    <div class="preview">
+                        <img class="thumbnail inline" ngf-src="file.result.url || file">
+                    </div>
+                    <p class="image_name_wrap">{{file.name}} {{f.$error}} {{f.$errorParam}}</p>
+                    <div style="text-align: center;">
+                        <a data-ng-click="continentForm.removeImage($index)" style="color:#FF0000">Remove</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--Continent  status-->
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Status</label>
+            <div class="btn-group">
+                <button type="button" class="btn sm"
+                        data-ng-class="continentForm.payload.status  == 'DRAFT' ?'btn-success' :'btn-info'"
+                        data-ng-click="continentForm.toggleStatus(continentForm.payload, 'DRAFT')">Drafted
+                </button>
+                <button type="button" class="btn sm"
+                        data-ng-class="continentForm.payload.status == 'PUBLISHED' ?'btn-success' :'btn-info'"
+                        data-ng-click="continentForm.toggleStatus(continentForm.payload, 'PUBLISHED')">Published
+                </button>
+                <button type="button" class="btn sm"
+                        data-ng-class="continentForm.payload.status == 'DEACTIVATED' ?'btn-success' :'btn-info'"
+                        data-ng-click="continentForm.toggleStatus(continentForm.payload, 'DEACTIVATED')">Deactivated
+                </button>
+            </div>
+        </div>
+        <div class="form-group highlight clearfix">
+            <div class="col-sm-offset-2 col-sm-10 clearfix create-user">
+                <button
+                        data-ng-click="continentForm.saveOrUpdate()"
+                        class="btn btn-success"
+                        data-ng-disabled="editForm.$invalid">
+                    {{continentForm.isNewOperation ? 'Create':'Update'}}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

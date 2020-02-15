@@ -1,0 +1,47 @@
+<div id="sidebar-black" class="main-sidebar fix-scroll" style="display: block;" data-ng-controller="NavbarCtrl">
+    <div class="current-user">
+        <a href="#" class="name">
+            <cl-image public-id="user_l0zjbe.png" class="avatar"></cl-image>
+            <!--<img class="avatar" ng-src="/user.png"/>-->
+            <span> {{user.name.full || "Admin User"}}
+                <i class="fa fa-chevron-down"></i>
+            </span>
+        </a>
+        <ul class="menu">
+            <li>
+                <a ui-sref="admin">Account settings</a>
+            </li>
+            <li>
+                <a ng-click="logout()">Log out</a>
+            </li>
+        </ul>
+    </div>
+    <div class="menu-section">
+        <h3>General</h3>
+        <ul>
+            <li ng-repeat="item in menu">
+                <a ui-sref="{{item.state}}" ng-class="{active: isActive(item.state)}">
+                    <i ng-class="item.icon" class="fa"></i>
+                    <span>{{item.title}}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="bottom-menu hidden-sm">
+        <ul>
+            <li><a href="#"><i class="fa fa-question"></i></a></li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-download"></i>
+                    <span class="flag"></span>
+                </a>
+                <!--<ul class="menu">-->
+                    <!--<li><a href="#">Notifcation 1</a></li>-->
+                    <!--<li><a href="#">Notifcation 2</a></li>-->
+                    <!--<li><a href="#">Notifcation 3</a></li>-->
+                <!--</ul>-->
+            </li>
+            <li><a ng-click="logout()"><i class="fa fa-sign-out"></i></a></li>
+        </ul>
+    </div>
+</div>
