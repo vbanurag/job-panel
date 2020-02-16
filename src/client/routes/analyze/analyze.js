@@ -46,20 +46,19 @@ class Analyze extends React.Component {
     return (
       <div className={s.root}>
         <div className={s.analyzeContent}>
-          <div className={s.formContainer} style={{margin: '10px 5px', width: '45%', display: 'inline-block'}}>
+          <div className={s.formContainer} style={{margin: '10px 5px', width: '45%', display: 'inline-block', textAlign: 'left'}}>
 
             <h1 className={s.formHeading}>Upload Resume</h1>
 
             <form>
               <label className={s.formLabels}>
-                Upload Resume:
                 <input type="file" name="resume" onChange={(e) => this.onChangeHandler('resume', e)} value={resume} className={s.formTextFields} style={{borderBottom: '0'}} />
               </label>
               <button value="Submit" onClick={this.submitHandler} className={s.buttonFields}> Submit </button>
             </form>
           </div>
 
-          <div className={s.formContainer} style={{margin: '10px 5px', display: 'inline-block', width: '49%', verticalAlign: 'top',}}>
+          <div className={s.formContainer} style={{margin: '10px 5px', display: 'inline-block', width: '49%', verticalAlign: 'top',textAlign: 'left'}}>
 
             <h1 className={s.formHeading}>Preview Resume</h1>
 
