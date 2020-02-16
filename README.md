@@ -14,4 +14,9 @@
 
 #### Bingo Project is working on localhost:3001
 
+### for deploy
+update tools/deployToStaging with heroku url
+
+currently live on [https://job-panel-env.herokuapp.com]
+
 #### in Case if you're facing any problem don't ping me :p
