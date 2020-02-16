@@ -26,6 +26,7 @@ import config from './config'
 import {setRuntimeVariable} from '../../src/client/actions/runtime'
 import apiRoutes from './api-routes'
 import { ErrorPageWithoutStyle } from '../client/routes/error/ErrorPage'
+import cors from "cors";
 //import './serverIntlPolyfill'
 
 const MONGO_URL = config.databaseUrl
@@ -58,6 +59,7 @@ const graphqlMiddleware = expressGraphQL(req => ({
 global.navigator = global.navigator || {}
 global.navigator.userAgent = global.navigator.userAgent || 'all'
 
+app.use(cors())
 app.use(compression())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())

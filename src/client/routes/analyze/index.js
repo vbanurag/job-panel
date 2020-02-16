@@ -1,15 +1,15 @@
 
 import React from 'react';
-import Listing from './listing';
+import Analyze from './analyze';
 import Layout from '../../components/Layout';
 
 export default {
-  path:'/job-listing',
-    action (context) {
+  path:'/analyze-profile',
+    action () {
       return {
         title:'home',
           component: <Layout>
-            <Listing {...context}/>
+            <Analyze/>
           </Layout>
       }
     }

@@ -25,8 +25,7 @@ module.exports = {
 
     // Database
   databaseUrl: process.env.DATABASE_URL ||
-  'mongodb://localhost:27017/travel-diaries' ||
-  'mongodb://anurag07:Anurag@2101@ds117739.mlab.com:17739/job-panel',
+  'mongodb://anurag07:jobpanel07@ds247410.mlab.com:47410/job-panel',
 
   // Web analytics
   analytics: {

@@ -8,7 +8,8 @@ export default {
     require('./home').default,
     require('./about').default,
     require('./createJob').default,
-    require('./jobListing').default
+    require('./jobListing').default,
+    require('./analyze').default
 
     // Wildcard routes, e.g. { path: '*', ... } (must go last)
     //require('./notFound').default

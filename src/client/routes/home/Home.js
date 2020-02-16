@@ -24,7 +24,7 @@ class Home extends React.Component {
             <Link className={[s.link]} to="/job-listing">
               <div className={[s.selectionList]}>List a job</div>
             </Link>
-            <Link className={s.link} to="/job-listing">
+            <Link className={s.link} to="/analyze-profile">
               <div className={[s.selectionList]}>Analyse profile</div>
             </Link>
           </div>

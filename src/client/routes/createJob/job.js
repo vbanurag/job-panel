@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './job.css';
 import Link from '../../components/Link';
+import { postDataService } from '../../utils/apiService'
 
 const JOB_STATUS = {
   open: 'Open',
@@ -22,38 +23,62 @@ class Home extends React.Component {
     super(props);
     this.state = {
       job: {
-        jobTitle: '',
-        jobLocation: '',
-        jobDescription: '',
-        jobDate: '',
-        jobStatus: '',
-      }
+        title: '',
+        location: '',
+        description: '',
+        date: '',
+        status: '',
+      },
+      message: ''
     };
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.submitHandler = this.submitHandler.bind(this);
   }
 
   onChangeHandler(name, e) {
-    console.log('onChangeHandler', name, e.target.value);
     const { job } = this.state;
-    this.setState({ job: { ...job, [name]: e.target.value } }, () => console.log('Saved in staet = ', this.state));
+    this.setState({ job: { ...job, [name]: e.target.value } });
+  }
+
+  async submitHandler (e) {
+    e.preventDefault()
+
+    let _data = await postDataService(`${window.App.authUrl}/api/v1/job`, this.state.job)
+    this.setState({
+      message: _data,
+      job: {
+        title: '',
+        location: '',
+        description: '',
+        date: '',
+        status: '',
+      },
+    })
+
   }
 
   render() {
 
     const {
       job: {
-        jobTitle,
-        jobLocation,
-        jobDescription,
-        jobDate,
-        jobStatus,
+        title,
+        location,
+        description,
+        date,
+        status,
       },
+      message,
     } = this.state;
 
     return (
       <div className={s.root} style={{padding:0}}>
         <div className={s.background}>
+          <div>
+            {
+              message && <div className={s.alertMsg}>{message}</div>
+            }
+          </div>
           <div className={s.formContainer}>
 
             <h1 className={s.formHeading}>JOB!!</h1>
@@ -61,32 +86,32 @@ class Home extends React.Component {
             <form>
               <label className={s.formLabels}>
                 Title:
-                <input type="text" name="jobTitle" onChange={(e) => this.onChangeHandler('jobTitle', e)} value={jobTitle} className={s.formTextFields} />
+                <input type="text" name="title" onChange={(e) => this.onChangeHandler('title', e)} value={title} className={s.formTextFields} />
               </label>
               <label className={s.formLabels}>
                 Location:
-                <input type="text" name="jobLocation" onChange={(e) => this.onChangeHandler('jobLocation', e)} value={jobLocation} className={s.formTextFields} />
+                <input type="text" name="location" onChange={(e) => this.onChangeHandler('location', e)} value={location} className={s.formTextFields} />
               </label>
               <label className={s.formLabels}>
                 Description:
-                <textarea type="text" name="jobDescription" onChange={(e) => this.onChangeHandler('jobDescription', e)} value={jobDescription} className={s.formTextFields} rows="4" cols="50" wrap="soft" draggable="false"></textarea>
+                <textarea type="text" name="description" onChange={(e) => this.onChangeHandler('description', e)} value={description} className={s.formTextFields} rows="4" cols="50" wrap="soft" draggable="false"></textarea>
               </label>
               <label className={s.formLabels}>
                 Date:
-                <input type="date" name="jobDate" onChange={(e) => this.onChangeHandler('jobDate', e)} value={jobDate} className={s.formTextFields} />
+                <input type="date" name="date" onChange={(e) => this.onChangeHandler('date', e)} value={date} className={s.formTextFields} />
               </label>
               <label className={s.formLabels}>
                 Status:
                 <label className={s.formLabels}>
-                  <input type="radio" name="jobStatus" value={JOB_STATUS.open} onChange={(e) => this.onChangeHandler('jobStatus', e)} checked={jobStatus === JOB_STATUS.open} className={s.radioFields} />
+                  <input type="radio" name="status" value={JOB_STATUS.open} onChange={(e) => this.onChangeHandler('status', e)} checked={status === JOB_STATUS.open} className={s.radioFields} />
                   {JOB_STATUS.open}
                 </label>
                 <label className={s.formLabels}>
-                  <input type="radio" name="jobStatus" value={JOB_STATUS.closed} onChange={(e) => this.onChangeHandler('jobStatus', e)} checked={jobStatus === JOB_STATUS.closed} className={s.radioFields} />
+                  <input type="radio" name="status" value={JOB_STATUS.closed} onChange={(e) => this.onChangeHandler('status', e)} checked={status === JOB_STATUS.closed} className={s.radioFields} />
                   {JOB_STATUS.closed}
                 </label>
               </label>
-              <button value="Submit" className={s.buttonFields}> Submit </button>
+              <button value="Submit" onClick={this.submitHandler} className={s.buttonFields}> Submit </button>
             </form>
           </div>
         </div>

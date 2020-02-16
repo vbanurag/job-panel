@@ -95,3 +95,34 @@
   background: linear-gradient(to right, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#86aecc', GradientType=1 );
 }
+
+.alertMsg{
+  background-color: #fff;
+  font-size: 20px;
+  font-family: cursive;
+  color: #2b2e39;
+  max-width: 580px;
+  text-align: center;
+  margin: 10px auto;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.previewLabels {
+  font-size: 18px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: #2b2e39;
+}
+
+.details {
+  border: 0;
+  border-bottom: 1px solid #2b2e39;
+  outline: 0;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.analyzeContent {
+  text-align: center;
+  display: block;
+}
