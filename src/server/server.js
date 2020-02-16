@@ -83,50 +83,6 @@ if (__DEV__) {  // eslint-disable-line no-undef
 
 app.use('/api/v1/',apiRoutes)
 
-/**
- * getUserFromToken is used to fetch token from cookies
- * and append user in req object
- * if user not found then no user key append in request
- */
-
-/*app.use(async (req, res, next) => {
-  const user = await getUserFromToken(req)
-  // user !== null ? req.user = user : null
-  req.user = user || null
-  next()
-})*/
-
-//app.use('/auth', auth)  // auth routes
-//app.use('/admin', isUser, hasRole(roles.SUPERADMIN), admin) // admin page
-//app.use('/print', print)
-//app.use('/api', apiRoutes)  // migration routes
-//app.use('/api/v1/admin',adminApi) // admin routes
-//app.use('/pdf', pdf)
-
-// Figure out request's language from header or cookie
-/*app.use(requestLanguage({
-  languages: config.locales,
-  queryName: 'lang',
-  cookie: {
-    name: 'lang',
-    options: {
-      path: '/',
-      maxAge: 3650 * 24 * 3600 * 1000    // 10 years in ms
-    },
-    url: '/lang/{language}'
-  }
-}))*/
-
-/*const graphqlAuthenticationMiddleware = (req, res, next) => {
-  if (req.user) {
-    next()
-  } else {
-    return res.status(401).json({error: 'Unauthorized request'})
-  }
-}*/
-
-// app.use(graphqlAuthenticationMiddleware)
-//app.use('/graphql', graphqlMiddleware)
 
 // Setup SSR
 app.get('*', async(req, res, next) => {

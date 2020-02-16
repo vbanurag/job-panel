@@ -38,21 +38,24 @@ export const updateJob = async (req, res) => {
 }
 
 export const fileAnalyze = async (req, res) => {
-    console.log(req.files)
     let fileName = req.files[0].originalname
     let filePath = tempWrite.sync(req.files[0].buffer);
 
     if (fileName.split('.')[1] == 'doc' || fileName.split('.')[1] == 'docx') {
-        filePath = await readXML(filePath)
+        // filePath = await readXML(filePath)
+        return res.send({})
     }
 
-console.log(filePath, '------')
     pdfParser.pdf2json(filePath, function (error, pdf) {
         if (error != null) {
             console.log(error);
+            res.send({
+                data: []
+            })
         } else {
-            console.log(JSON.stringify(pdf, null, 2));
-            return res.send(pdf)
+            return res.send({
+                data: pdf.pages
+            })
         }
     });
 

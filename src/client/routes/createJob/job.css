@@ -126,3 +126,7 @@
   text-align: center;
   display: block;
 }
+
+.textCol {
+  color: yellow;
+}

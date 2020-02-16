@@ -1,5 +1,5 @@
 
-# Travel Diary
+# Job Panel
 
 ## Installing Process
 1. install npm 
@@ -7,8 +7,6 @@
 3. Install the mongodb
 
 ## Clone the project
-
-#### cd to travel-diaries
 
 #### run yarn install
 

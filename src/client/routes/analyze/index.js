@@ -7,7 +7,7 @@ export default {
   path:'/analyze-profile',
     action () {
       return {
-        title:'home',
+        title:'Profile',
           component: <Layout>
             <Analyze/>
           </Layout>

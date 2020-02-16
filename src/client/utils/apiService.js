@@ -22,6 +22,9 @@ export const postDataService = async (apiUrl, data) => {
             apiUrl,
             data
         ).then(res => {
+            if(res.data) {
+                resolve(res.data)
+            }
             resolve('Created Successfully ')
             
         }).catch(err => {
